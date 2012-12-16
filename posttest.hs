@@ -2,27 +2,9 @@
 
 module Main where
 
-import Control.Monad.Identity
-import Control.Monad.Random
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.ToRow
-import Data.Int
-import Data.Text (pack, Text)
-import System.Random
-
-data Thing = Thing Int32 Int32 Text
-
-randomThing :: (RandomGen g, Monad m) => RandT g m Thing
-randomThing = do
-  a <- getRandom
-  b <- getRandom
-  c <- getRandomRs ('a', 'z')
-  return $ Thing a b $ pack $ take 10 c
-
-genThings :: IO [Thing]
-genThings = do
-  g <- newStdGen
-  return $ runIdentity $ evalRandT (sequence $ repeat randomThing) g
+import Common
                
 makeDB c = do
   mapM_ (execute_ c) ["drop table if exists things"
