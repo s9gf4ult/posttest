@@ -6,7 +6,6 @@ version:             0.1.0.0
 -- synopsis:            
 -- description:         
 -- license:             
-license-file:        LICENSE
 -- author:              
 -- maintainer:          
 -- copyright:           
@@ -15,6 +14,11 @@ build-type:          Simple
 cabal-version:       >=1.8
 
 executable posttest
-  -- main-is:             
+  main-is:             posttest.hs
   -- other-modules:       
-  build-depends:       base ==4.5.*
+  build-depends:       base ==4.5.*,
+                       postgresql-simple,
+                       MonadRandom,
+                       random,
+                       mtl,
+                       text
