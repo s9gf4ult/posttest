@@ -22,3 +22,12 @@ executable posttest
                        random,
                        mtl,
                        text
+
+executable dumptest
+   main-is:              dumptest.hs
+
+   build-depends:       base ==4.5.*,
+                        MonadRandom,
+                        random,
+                        mtl,
+                        text
